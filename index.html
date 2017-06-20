@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/brightEdge-style.css" rel="stylesheet">
-    </head>
-    <body>
-        <div id="container">
-            <div>
-                 <div class="enteries">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/brightEdge-style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="container">
+        <div>
+            <div class="enteries">
                 <label>
                     Show
                     <select id="optionSelected">
@@ -21,29 +23,37 @@
                     </select>
                     enteries per page
                 </label>
-            </div> 
+            </div>
             <div class="search">
                 <label>
-                    <input type="search" name="search" placeholder="Search">
+                    <input type="search" id="filteredSearch" name="search" placeholder="SearchBy Name">
                 </label>
             </div>
-            </div>
-           
-            <table id="myTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>email</th>
-                        <th>Phone Number</th>
-                        <th>City</th>
-                        <th>Website</th>
-                    </tr>
-                </thead>
-                <tbody id="dataToDisplay">
-                    
-                </tbody>
-            </table>  
         </div>
-        <script src="js/brightEdge-script.js"></script>
-    </body>
+
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th class="sort">Name</th>
+                    <th class="sort">email</th>
+                    <th class="sort">Phone Number</th>
+                    <th class="sort">City</th>
+                    <th class="sort">Website</th>
+                </tr>
+            </thead>
+            <tbody id="dataToDisplay">
+
+            </tbody>
+        </table>
+        <div id="pageNavPosition">
+            <a href="javascript:prevPage()" id="btn_prev" onClick="prevPage()">Prev</a>
+            <a href="javascript:nextPage()" id="btn_next" onClick="nextPage()">Next</a> page: <span id="page"></span>
+        </div>
+    </div>
+    <script src="js/brightEdge-script.js"></script>
+    <script src="js/brightEdge-paging.js"></script>
+    <script src="js/brightEdge-sorting.js"></script>
+    <script src="js/brightEdge-filter.js"></script>
+</body>
+
 </html>

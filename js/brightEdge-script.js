@@ -1,3 +1,4 @@
+var globCon = {};
 (function iife() {
     var xhttp, current_page, totalOptions, records_per_page, totalData, objJson, config;
     xhttp = new XMLHttpRequest();
@@ -6,16 +7,17 @@
     totalOptions = document.getElementById("optionSelected");
     totalOptions.addEventListener("change", optionChanged);
 
-    config = {
+    globCon.config = {
         pages: 10,
         start: 0,
         end: 2,
+        dynamicTable: dynamicTable,
         rows: null
     }
 
     function optionChanged() {
-        config.end = totalOptions.options[totalOptions.selectedIndex].text;
-        fetchData();
+        globCon.config.end = totalOptions.options[totalOptions.selectedIndex].text;
+        pagination();
     }
 
     function fetchData(){
@@ -30,7 +32,7 @@
         
     }
     function addDatatoConfig(data){
-        config.rows = JSON.parse(data);
+        globCon.config.rows = JSON.parse(data);
         pagination();
     }
     function dynamicTable(start,end) {
@@ -38,9 +40,8 @@
         // objJson = data;
         // totalData = data.length;
         var result = '';
-        var value = config.rows
-        console.log(config)
-        var lindex = config.rows.length - 1;
+        var value = globCon.config.rows;
+        var lindex = globCon.config.rows.length - 1;
         if(end > lindex){
             end = lindex;
         }
@@ -57,12 +58,8 @@
     fetchData();
     
     function pagination(){
-        dynamicTable(config.start,config.end);
+        console.log(globCon.config);
+        dynamicTable(globCon.config.start,globCon.config.end);
     }
-    function pager(data,show){
-
-    }
-
-   
 
 }());
