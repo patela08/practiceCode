@@ -1,6 +1,9 @@
 var current_page = 1;
 var records_per_page = globCon.config.end;
-console.log(globCon);
+console.log(globCon.config);
+globCon.config.nextPage = nextPage;
+globCon.config.prevPage = prevPage;
+globCon.config.current_page = current_page;
 function prevPage()
 {
     if (current_page > 1) {
@@ -10,8 +13,7 @@ function prevPage()
 }
 
 function nextPage()
-{
-    console.log("sdfjlkdsff"); 
+{ 
     if (current_page < numPages()) {
         current_page++;
         changePage(current_page);
