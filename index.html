@@ -30,24 +30,27 @@
                 </label>
             </div>
         </div>
+        <div>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th class="sort">Name</th>
+                        <th class="sort">email</th>
+                        <th class="sort">Phone Number</th>
+                        <th class="sort">City</th>
+                        <th class="sort">Website</th>
+                    </tr>
+                </thead>
+                <tbody id="dataToDisplay">
 
-        <table id="myTable">
-            <thead>
-                <tr>
-                    <th class="sort">Name</th>
-                    <th class="sort">email</th>
-                    <th class="sort">Phone Number</th>
-                    <th class="sort">City</th>
-                    <th class="sort">Website</th>
-                </tr>
-            </thead>
-            <tbody id="dataToDisplay">
-
-            </tbody>
-        </table>
-        <div id="pageNavPosition">
-            <a href="javascript:globCon.config.prevPage()" id="btn_prev" onClick="prevPage()">Prev</a>
-            <a href="javascript:globCon.config.nextPage()" id="btn_next" onClick="nextPage()">Next</a> page: <span id="page"></span>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="pageNavPosition" >
+            <div class="wdth enteries"> <a href="#btn_prev" onclick="globCon.config.prevPage()" id="btn_prev" >Prev</a></div>
+                <div id="middle" class="enteries">Page: <span id="page"></span></div>
+            <div class="wdth enteries"><a href="#" onclick="globCon.config.nextPage()" id="btn_next" >Next</a> </div>
         </div>
     </div>
     <script src="js/brightEdge-script.js"></script>

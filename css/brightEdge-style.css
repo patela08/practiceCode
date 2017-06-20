@@ -16,6 +16,16 @@ body {
 .sort{
     cursor: pointer;
 }
+#pageNavPosition{
+    width: 100%;
+}
+.wdth{
+    width: 25%;
+}
+
+#middle{
+    width: 50%;
+}
 table {
     border: 1px solid #ccc;
     width: 100%;
