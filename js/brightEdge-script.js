@@ -41,15 +41,16 @@ var globCon = {};
     function dynamicTable(start, end) {
         var result = '';
         var value = globCon.config.rows;
-        if (end > value.length-1) {
-            end = value.length-1;
+        if (end > value.length - 1) {
+            end = value.length - 1;
         }
         for (var i = start; i < end; i++) {
-            result += "<tr><td data-label='name'>" + value[i].name +
-                "</td><td data-label='email'>" + value[i].email +
-                "</td><td data-label='phonenumber'>" + value[i].phone +
-                "</td><td data-label='city'>" + value[i].address.city +
-                "</td><td data-label='website'>" + value[i].website +
+            var id = value[i].id;
+            result += "<tr><td data-label='name' contenteditable='true'>" + value[i].name +
+                "</td><td data-label='email' contenteditable='true'>" + value[i].email +
+                "</td><td data-label='phonenumber' contenteditable='true'>" + value[i].phone +
+                "</td><td data-label='city' contenteditable='true'>" + value[i].address.city +
+                "</td><td data-label='website' contenteditable='true'>" + value[i].website +
                 "</td></tr>"
         };
         document.getElementById("dataToDisplay").innerHTML = result;
@@ -59,6 +60,46 @@ var globCon = {};
     function pagination() {
         globCon.config.current_page = 1;
         globCon.config.changePage(globCon.config.current_page);
+    }
+
+    document.getElementById("hideColumn").addEventListener("click", hideColumn);
+    document.getElementById("showColumn").addEventListener("click", showColumn);
+    var selectedColumn = document.getElementById("optionSelectedForColumn");
+    selectedColumn.addEventListener("change", columnOptions);
+    var selectedText = selectedColumn[selectedColumn.selectedIndex].value;
+
+    function columnOptions() {
+        selectedText = selectedColumn[selectedColumn.selectedIndex].value;
+    }
+
+    function hideShowColumn(dsply) {
+        var tHead = document.getElementsByTagName("th");
+        var tBody = document.getElementsByTagName("td");
+        console.log(tBody[0].getAttribute("data-label"));
+        if (selectedText.toLowerCase() !== "all") {
+            console.log("hide")
+            for (var i = 0; i < tHead.length; i++) {
+                if (tHead[i].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
+                    tHead[i].style.display = dsply;
+                    break;
+                }
+            }
+            for (var j = 0; j < tBody.length; j++) {
+                console.log("sdd");
+                if (tBody[j].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
+                    tBody[j].style.display = dsply;
+
+                }
+            }
+        }
+    }
+
+    function showColumn() {
+        hideShowColumn('block');
+    }
+
+    function hideColumn() {
+        hideShowColumn('none');
     }
 
 }());

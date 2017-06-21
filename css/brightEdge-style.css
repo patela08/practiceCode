@@ -5,11 +5,15 @@ body {
 
 #container {
     width: 60%;
-    margin: auto;
+    margin:10% 20%
 }
 
 .enteries {
     float: left;
+}
+
+.middle{
+    margin-left: 10%;   
 }
 
 .search {
@@ -22,9 +26,8 @@ body {
 }
 
 #pageNavPosition {
-    width: inherit;
     position: absolute;
-    left: 45%;
+    left: 40%;
 }
 
 #middle {

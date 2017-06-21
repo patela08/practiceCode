@@ -1,4 +1,6 @@
+
 function sortTable(table, col, reverse) {
+    temp = col;
     var tb = table.tBodies[0], // use `<tbody>` to ignore `<thead>` and `<tfoot>` rows
         tr = Array.prototype.slice.call(tb.rows, 0), // put rows into array
         i;
@@ -12,7 +14,7 @@ function sortTable(table, col, reverse) {
     });
     for (i = 0; i < tr.length; ++i) tb.appendChild(tr[i]); // append each row in order
 }
-
+var temp = 0;
 function makeSortable(table) {
 
     var th = table.tHead,
@@ -22,30 +24,18 @@ function makeSortable(table) {
     else return; // if no `<thead>` then do nothing
     while (--i >= 0)(function (i) {
         var dir = 1;
-        // var temp = 0;
         th[i].addEventListener('click', function () {
-            if (this.className == "sort asd" || this.className == "dsc asd") {
-                this.className = "asc";         
-                // this.className  += " asd";
+            if(temp !== i){
+                document.querySelectorAll("th")[temp].className = "sort";
+            }
+            if (this.className == "sort" || this.className == "dsc") {
+                this.className = "asc";
             } else {
                 this.className = "dsc";
-                // this.className  += " asd";
             }
-             
-            console.log(this.className);
-            var els = document.getElementsByClassName("asd");
-            var j = els.length;
-            while(j--){
-                console.log("sdf");
-                els[j].className = "sort asd";
-            }
-            this.className += " asd";
             sortTable(table, i, (dir = 1 - dir))
         });
-        console.log(document.getElementsByClassName("asd")[i]);
-        document.getElementsByClassName("asd")[i].className = "sort";
     }(i));
-    // document.getElementsByClassName("asd")[i].className = "sort";
 }
 
 function makeAllSortable(parent) {
@@ -54,11 +44,6 @@ function makeAllSortable(parent) {
         i = t.length;
     while (--i >= 0) makeSortable(t[i]);
 }
-
-// document.getElementsByClassName('sort')[0].addEventListener("click", function () {
-//     // this.style.
-//     console.log(this.style);
-// })
 
 window.onload = function () {
     makeAllSortable();
