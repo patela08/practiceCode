@@ -75,21 +75,16 @@ var globCon = {};
     function hideShowColumn(dsply) {
         var tHead = document.getElementsByTagName("th");
         var tBody = document.getElementsByTagName("td");
-        console.log(tBody[0].getAttribute("data-label"));
-        if (selectedText.toLowerCase() !== "all") {
-            console.log("hide")
-            for (var i = 0; i < tHead.length; i++) {
-                if (tHead[i].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
-                    tHead[i].style.display = dsply;
-                    break;
-                }
+        for (var i = 0; i < tHead.length; i++) {
+            if (tHead[i].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
+                tHead[i].style.display = dsply;
+                break;
             }
-            for (var j = 0; j < tBody.length; j++) {
-                console.log("sdd");
-                if (tBody[j].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
-                    tBody[j].style.display = dsply;
+        }
+        for (var j = 0; j < tBody.length; j++) {
+            if (tBody[j].getAttribute("data-label").toLowerCase() == selectedText.toLowerCase()) {
+                tBody[j].style.display = dsply;
 
-                }
             }
         }
     }
