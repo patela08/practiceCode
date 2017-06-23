@@ -45,7 +45,6 @@ var globCon = {};
             end = value.length - 1;
         }
         for (var i = start; i < end; i++) {
-            var id = value[i].id;
             result += "<tr><td data-label='name' contenteditable='true'>" + value[i].name +
                 "</td><td data-label='email' contenteditable='true'>" + value[i].email +
                 "</td><td data-label='phonenumber' contenteditable='true'>" + value[i].phone +
